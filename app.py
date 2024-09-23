@@ -1,9 +1,9 @@
 import streamlit as st
-import pickle
+import joblib
 
 
 # Load the model
-model = pickle.load(open('model.pkl', 'rb'))
+model = joblib.load('model.joblib')
 
 def predict_profit(RD_Spend, Administration, Marketing_Spend):
     input_data = [RD_Spend, Administration, Marketing_Spend]
@@ -21,6 +21,3 @@ Marketing_Spend = st.text_input('Enter Marketing Spend')
 if st.button('Predict'):
     profit = predict_profit(RD_Spend, Administration, Marketing_Spend)
     st.success(f'The profit is {profit}')
-
-
-
